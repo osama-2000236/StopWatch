@@ -36,4 +36,12 @@
         android:layout_height="wrap_content"
         android:text="Reset"
         android:enabled="false"/>
+
+    <Button
+        android:id="@+id/btnrotate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="Rotate" />
+
 </LinearLayout>
