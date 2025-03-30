@@ -56,14 +56,13 @@ public class MainActivity extends AppCompatActivity {
                 startTime = SystemClock.uptimeMillis() - timeInMilliseconds;
                 handler.post(updateTimerThread);
             }
-            // Set buttons based on the running state
             updateButtonStates(!isRunning, true, isRunning, !isRunning);
         } else {
-            // Initial button states (start enabled, others disabled)
+
             updateButtonStates(true, true, false, false);
         }
 
-        // Start Button Click Event
+
         btnStart.setOnClickListener(v -> {
             if (!isRunning) {
                 startTime = SystemClock.uptimeMillis();
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Stop Button Click Event
+
         btnStop.setOnClickListener(v -> {
             if (isRunning) {
                 timeSwapBuff += timeInMilliseconds;
@@ -83,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Reset Button Click Event
         btnReset.setOnClickListener(v -> {
             startTime = timeSwapBuff = timeInMilliseconds = updateTime = 0L;
             updateDisplay();
@@ -92,11 +90,11 @@ public class MainActivity extends AppCompatActivity {
             updateButtonStates(true, true, false, false);
         });
 
-        // Rotate Button Click Event
+
         btnrotate.setOnClickListener(v -> rotateDevice(v));
     }
 
-    // Update the displayed time in mm:ss format
+
     private void updateDisplay() {
         int secs = (int) (updateTime / 1000);
         int mins = secs / 60;
@@ -104,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         tvTime.setText(String.format("%02d:%02d", mins, secs));
     }
 
-    // Enable/disable buttons: parameters for start, rotate, stop, reset respectively
+
     private void updateButtonStates(boolean start, boolean rotate, boolean stop, boolean reset) {
         btnStart.setEnabled(start);
         btnrotate.setEnabled(rotate);
@@ -112,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         btnReset.setEnabled(reset);
     }
 
-    // Save the timer state so that it can be restored on rotation
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -123,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         outState.putBoolean("isRunning", isRunning);
     }
 
-    // Toggle device orientation when the rotate button is clicked
+
     public void rotateDevice(View view) {
         Log.d("MainActivity", "rotateDevice called");
         int currentOrientation = getResources().getConfiguration().orientation;
