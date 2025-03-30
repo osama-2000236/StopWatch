@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         handler = new Handler();
 
-        // Runnable to update the stopwatch time
+
         updateTimerThread = new Runnable() {
             public void run() {
                 timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
             isRunning = savedInstanceState.getBoolean("isRunning");
             updateDisplay();
             if (isRunning) {
-                // Adjust startTime so that the elapsed time remains accurate
                 startTime = SystemClock.uptimeMillis() - timeInMilliseconds;
                 handler.post(updateTimerThread);
             }
